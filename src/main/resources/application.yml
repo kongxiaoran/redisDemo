@@ -1,41 +1,15 @@
 spring:
-  datasource:
-    username: root
-    password: 11111111
-    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
   redis:
     host: 127.0.0.1
     port: 6379
     timeout: 20000
-    #    ??????????????????
-    #    cluster:
-    #      ????
-    #      nodes: xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx
-    #      #????5 ???????????????Too many Cluster redirections
-    #      maxRedirects: 3
-    pool:
-      max-active: 8
-      min-idle: 0
-      max-idle: 8
-      max-wait: -1
-    password:
+    jedis:
+      pool:
+        max-idle: 6    #最大空闲数
+        max-active: 10 #最大连接数
+        min-idle: 2    #最小空闲数
+    password: 111111
 server:
   port: 10004
-  tomcat:
-    max-http-form-post-size: 300MB
-  servlet:
-    context-path: /
-  compression:
-    enabled: true
-    mime-types: application/json,application/xml,text/html,text/plain,text/css,application/x-javascript
-    min-response-size: 1024
-    max-http-header-size: 102400
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-
-debug: true
 
 
