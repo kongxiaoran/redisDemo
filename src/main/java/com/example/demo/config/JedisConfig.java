@@ -43,9 +43,9 @@ public class JedisConfig {
     @Bean
     public JedisPool jedisPool(){
         JedisPoolConfig jedisPoolConfig=new JedisPoolConfig();
-        jedisPoolConfig.setMaxIdle(maxIdle);
-        jedisPoolConfig.setMinIdle(minIdle);
-        jedisPoolConfig.setMaxTotal(maxActive);
+        jedisPoolConfig.setMaxIdle(maxIdle);        // 连接池 最多有 maxIdle 个空闲连接
+        jedisPoolConfig.setMinIdle(minIdle);        // 连接池 最少常备 minIdle 个空闲连接
+        jedisPoolConfig.setMaxTotal(maxActive);     // 连接池 最多存在 maxIdle 个连接
 
         JedisPool jedisPool=new JedisPool(jedisPoolConfig,host,port,timeout,password);
 
